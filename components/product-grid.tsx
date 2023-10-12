@@ -20,7 +20,7 @@ export function ProductGrid({products}:Props) {
         <div>
           <XCircle className="mx-auto h-10 w-10 text-gray-500 dark:text-gray-200" />
           <h1 className="mt-2 text-xl font-bold tracking-tight text-gray-500 dark:text-gray-200 sm:text-2xl">
-            Producto no encontrado
+            No products found
           </h1>
         </div>
       </div>
@@ -32,7 +32,7 @@ export function ProductGrid({products}:Props) {
       {products.map((product) => (
         <Link key={product._id} href={`/products/${product.slug}`} className="group text-sm">
           <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-100 group-hover:opacity-75 dark:border-gray-800">
-            <Image
+          <Image
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(225,280))}`}
               src={product.images ? urlForImage(product.images[0]).url() : ""}

@@ -14,7 +14,7 @@ export const Icons = {
     <svg
       height="800px"
       width="800px"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns=""
       viewBox="0 0 511.999 511.999"
       xmlSpace="preserve"
       {...props}
