@@ -8,8 +8,8 @@ import { ProductFilters } from "@/components/product-filters"
 import { ProductGrid } from "@/components/product-grid"
 import { ProductSort } from "@/components/product-sort"
 import { seedSanityData } from "@/lib/seed"
-
-
+import LoadingScreen from "@/components/LoadingScreens/LoadingScreen"
+import Image from "next/image"
 interface Props {
   searchParams:{
     date?:string
@@ -50,7 +50,17 @@ export default async function Page({searchParams}:Props) {
   )
 
   // await seedSanityData()
+
   return (
+    <div>
+         <LoadingScreen type="gradient-waves">
+        <Image
+          src="/assets/images/logo.png"
+          alt="LOGO"
+          width={184}
+          height={198}
+        />
+      </LoadingScreen>
     <div>
       <div className="px-4 pt-20 text-center">
         <h1 className="text-4xl font-extrabold tracking-normal">{siteConfig.name}</h1>
@@ -82,6 +92,7 @@ export default async function Page({searchParams}:Props) {
           </section>
         </main>
       </div>
+    </div>
     </div>
   )
 }
