@@ -35,6 +35,7 @@ export default async function Page({searchParams}:Props) {
   const searchFilter = search ? `&& name match "${search}"` : ""
   const filter = `*[${productFilter}${colorFilter}${categoryFilter}${sizeFilter}${searchFilter}]`
 
+
   const products = await client.fetch<SanityProduct[]>(
     groq`${filter} ${order} {
       _id,
@@ -52,31 +53,50 @@ export default async function Page({searchParams}:Props) {
   // await seedSanityData()
 
   return (
+    
+  
     <div>
-         <LoadingScreen type="gradient-waves">
+             <LoadingScreen type="gradient-waves" >
         <Image
           src="/assets/images/logo.png"
           alt="LOGO"
-          width={184}
+          width={200}
           height={198}
         />
       </LoadingScreen>
     <div>
-      <div className="px-4 pt-20 text-center">
-        <h1 className="text-4xl font-extrabold tracking-normal">{siteConfig.name}</h1>
+      
+      <div className="px-4 pt-20 text-center ">
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-60"></div>
+        <Image
+      
+      className="w-full "
+      src="/frontPage.jpg"
+      alt="Next.js Logo"
+      width={1800}
+      height={2000}
+      priority
+    />
+       
+        </div>
+        <h1 className="text-4xl font-extrabold tracking-normal text-amber-400">{siteConfig.name}</h1>
         <p className="mx-auto mt-4 max-w-3xl text-base">{siteConfig.description}</p>
       </div>
       <div>
         <main className="mx-auto max-w-6xl px-6">
+          
           <div className="flex items-center justify-between border-b border-gray-200 pb-4 pt-24 dark:border-gray-800">
+            
             <h1 className="text-xl font-bold tracking-tight sm:text-2xl">
             {products.length} result{products.length === 1 ? "" : "s"}
             </h1>
             {/* Product Sort */}
             <ProductSort/>
           </div>
-
+              
           <section aria-labelledby="products-heading" className="pb-24 pt-6">
+            
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>
@@ -89,7 +109,9 @@ export default async function Page({searchParams}:Props) {
               {/* Product grid */}
               <ProductGrid products={products}/>
             </div>
+            
           </section>
+          
         </main>
       </div>
     </div>
